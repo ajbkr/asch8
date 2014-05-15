@@ -29,6 +29,15 @@ required to successfully assemble CHIP-8 source code to a binary file (with the
 .ch8 filename extension). This file can then be run on your favourite CHIP-8
 interpreter.
 
+#### Example ####
+
+The file font4x6.hence is provided as an example of the CHIP-8 pseudo-assembly
+language accepted by this assembler.
+
+```
+$ ./asch8 font4x6
+```
+
 ### TODO ###
 
 - [ ] Add tests
