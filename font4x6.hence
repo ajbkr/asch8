@@ -183,14 +183,208 @@ main
 	ldi	vc '54'			[ 6 ]
 	call_	address 'putchar'
 
-	[...]
+	ldi	ve '12'
+	ldi	vd '13'
+	ldi	vc '32'			[ SPACE ]
+	call_	address 'putchar'
+
+	ldi	ve '16'
+	ldi	vd '13'
+	ldi	vc '98'			[ b ]
+	call_	address 'putchar'
+
+	ldi	ve '20'
+	ldi	vd '13'
+	ldi	vc '105'		[ i ]
+	call_	address 'putchar'
+
+	ldi	ve '24'
+	ldi	vd '13'
+	ldi	vc '116'		[ t ]
+	call_	address 'putchar'
+
+	ldi	ve '28'
+	ldi	vd '13'
+	ldi	vc '109'		[ m ]
+	call_	address 'putchar'
+
+	ldi	ve '32'
+	ldi	vd '13'
+	ldi	vc '97'			[ a ]
+	call_	address 'putchar'
+
+	ldi	ve '36'
+	ldi	vd '13'
+	ldi	vc '112'		[ p ]
+	call_	address 'putchar'
+
+	ldi	ve '40'
+	ldi	vd '13'
+	ldi	vc '32'			[ SPACE ]
+	call_	address 'putchar'
+
+	ldi	ve '44'
+	ldi	vd '13'
+	ldi	vc '102'		[ f ]
+	call_	address 'putchar'
+
+	ldi	ve '48'
+	ldi	vd '13'
+	ldi	vc '111'		[ o ]
+	call_	address 'putchar'
+
+	ldi	ve '52'
+	ldi	vd '13'
+	ldi	vc '110'		[ n ]
+	call_	address 'putchar'
+
+	ldi	ve '56'
+	ldi	vd '13'
+	ldi	vc '116'		[ t ]
+	call_	address 'putchar'
+
+	ldi	ve '0'
+	ldi	vd '19'
+	ldi	vc '49'			[ 1 ]
+	call_	address 'putchar'
+
+	ldi	ve '4'
+	ldi	vd '19'
+	ldi	vc '54'			[ 6 ]
+	call_	address 'putchar'
+
+	ldi	ve '8'
+	ldi	vd '19'
+	ldi	vc '120'		[ x ]
+	call_	address 'putchar'
+
+	ldi	ve '12'
+	ldi	vd '19'
+	ldi	vc '53'			[ 5 ]
+	call_	address 'putchar'
+
+	ldi	ve '16'
+	ldi	vd '19'
+	ldi	vc '32'			[ SPACE ]
+	call_	address 'putchar'
+
+	ldi	ve '20'
+	ldi	vd '19'
+	ldi	vc '116'		[ t ]
+	call_	address 'putchar'
+
+	ldi	ve '24'
+	ldi	vd '19'
+	ldi	vc '101'		[ e ]
+	call_	address 'putchar'
+
+	ldi	ve '28'
+	ldi	vd '19'
+	ldi	vc '120'		[ x ]
+	call_	address 'putchar'
+
+	ldi	ve '32'
+	ldi	vd '19'
+	ldi	vc '116'		[ t ]
+	call_	address 'putchar'
+
+	ldi	ve '36'
+	ldi	vd '19'
+	ldi	vc '32'			[ SPACE ]
+	call_	address 'putchar'
+
+	ldi	ve '40'
+	ldi	vd '19'
+	ldi	vc '109'		[ m ]
+	call_	address 'putchar'
+
+	ldi	ve '44'
+	ldi	vd '19'
+	ldi	vc '111'		[ o ]
+	call_	address 'putchar'
+
+	ldi	ve '48'
+	ldi	vd '19'
+	ldi	vc '100'		[ d ]
+	call_	address 'putchar'
+
+	ldi	ve '52'
+	ldi	vd '19'
+	ldi	vc '101'		[ e ]
+	call_	address 'putchar'
+
+	ldi	ve '0'
+	ldi	vd '25'
+	ldi	vc '57'			[ 9 ]
+	call_	address 'putchar'
+
+	ldi	ve '4'
+	ldi	vd '25'
+	ldi	vc '53'			[ 5 ]
+	call_	address 'putchar'
+
+	ldi	ve '8'
+	ldi	vd '25'
+	ldi	vc '32'			[ SPACE ]
+	call_	address 'putchar'
+
+	ldi	ve '12'
+	ldi	vd '25'
+	ldi	vc '65'			[ A ]
+	call_	address 'putchar'
+
+	ldi	ve '16'
+	ldi	vd '25'
+	ldi	vc '83'			[ S ]
+	call_	address 'putchar'
+
+	ldi	ve '20'
+	ldi	vd '25'
+	ldi	vc '67'			[ C ]
+	call_	address 'putchar'
+
+	ldi	ve '24'
+	ldi	vd '25'
+	ldi	vc '73'			[ I ]
+	call_	address 'putchar'
+
+	ldi	ve '28'
+	ldi	vd '25'
+	ldi	vc '73'			[ I ]
+	call_	address 'putchar'
+
+	ldi	ve '32'
+	ldi	vd '25'
+	ldi	vc '32'			[ SPACE ]
+	call_	address 'putchar'
+
+	ldi	ve '36'
+	ldi	vd '25'
+	ldi	vc '99'			[ c ]
+	call_	address 'putchar'
+
+	ldi	ve '40'
+	ldi	vd '25'
+	ldi	vc '104'		[ h ]
+	call_	address 'putchar'
+
+	ldi	ve '44'
+	ldi	vd '25'
+	ldi	vc '97'			[ a ]
+	call_	address 'putchar'
+
+	ldi	ve '48'
+	ldi	vd '25'
+	ldi	vc '114'		[ r ]
+	call_	address 'putchar'
+
+	ldi	ve '52'
+	ldi	vd '25'
+	ldi	vc '115'		[ s ]
+	call_	address 'putchar'
 
  label 'halt'
 	jp	address 'halt'
-
- [label 'foo']
-	[ldi	v0 address-hi 'foo']
-	[ldi	v1 address-lo 'foo']
 
 [( x y c -- )]
  label 'putchar'

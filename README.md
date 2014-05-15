@@ -38,6 +38,11 @@ language accepted by this assembler.
 $ ./asch8 font4x6
 ```
 
+When the assembled binary is run, you should see output identical to the
+following image:
+
+![font4x6 output](/font4x6.gif?raw=true "font4x6 output")
+
 ### TODO ###
 
 - [ ] Add tests
