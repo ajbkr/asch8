@@ -1,0 +1,18 @@
+#!/bin/bash
+A2B=/home/ajb/opt/asch8/a2b
+CC=/usr/bin/gcc
+CFLAGS='-I /home/ajb/opt/Hence/'
+HENCE=/home/ajb/opt/Hence/hence
+HFLAGS='-tc /home/ajb/opt/Hence/h0.hence'
+LIBHENCE=/home/ajb/opt/Hence/libhence.c
+RELOC8=/home/ajb/opt/asch8/reloc8
+
+$HENCE $HFLAGS asch8.hence $1.hence > $1.c &&				\
+	$CC $CFLAGS -o $1 $1.c $LIBHENCE &&				\
+	./$1 | $A2B > $1.ch8 &&						\
+	rm $1 $1.c &&							\
+	$HENCE $HFLAGS reloc.hence $1.hence > $1-reloc.c &&		\
+	$CC $CFLAGS -o $1-reloc $1-reloc.c $LIBHENCE &&			\
+	./$1-reloc | $RELOC8 $1.ch8 > $1-reloc.ch8 &&			\
+	rm $1-reloc $1-reloc.c $1.ch8 &&				\
+	mv $1-reloc.ch8 $1.ch8

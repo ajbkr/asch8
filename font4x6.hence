@@ -1,0 +1,966 @@
+x
+  hexadecimal
+
+init
+  init-asch8
+
+main
+  init
+
+ label 'start'
+	ldi	ve '0'
+	ldi	vd '1'
+	ldi	vc '67'			[ C ]
+	call_	address 'putchar'
+
+	ldi	ve '4'
+	ldi	vd '1'
+	ldi	vc '72'			[ H ]
+	call_	address 'putchar'
+
+	ldi	ve '8'
+	ldi	vd '1'
+	ldi	vc '73'			[ I ]
+	call_	address 'putchar'
+
+	ldi	ve '12'
+	ldi	vd '1'
+	ldi	vc '80'			[ P ]
+	call_	address 'putchar'
+
+	ldi	ve '16'
+	ldi	vd '1'
+	ldi	vc '45'			[ - ]
+	call_	address 'putchar'
+
+	ldi	ve '20'
+	ldi	vd '1'
+	ldi	vc '56'			[ 8 ]
+	call_	address 'putchar'
+
+	ldi	ve '24'
+	ldi	vd '1'
+	ldi	vc '32'			[ SPACE ]
+	call_	address 'putchar'
+
+	ldi	ve '28'
+	ldi	vd '1'
+	ldi	vc '112'		[ p ]
+	call_	address 'putchar'
+
+	ldi	ve '32'
+	ldi	vd '1'
+	ldi	vc '117'		[ u ]
+	call_	address 'putchar'
+
+	ldi	ve '36'
+	ldi	vd '1'
+	ldi	vc '116'		[ t ]
+	call_	address 'putchar'
+
+	ldi	ve '40'
+	ldi	vd '1'
+	ldi	vc '99'			[ c ]
+	call_	address 'putchar'
+
+	ldi	ve '44'
+	ldi	vd '1'
+	ldi	vc '104'		[ h ]
+	call_	address 'putchar'
+
+	ldi	ve '48'
+	ldi	vd '1'
+	ldi	vc '97'			[ a ]
+	call_	address 'putchar'
+
+	ldi	ve '52'
+	ldi	vd '1'
+	ldi	vc '114'		[ r ]
+	call_	address 'putchar'
+
+	ldi	ve '56'
+	ldi	vd '1'
+	ldi	vc '40'			[ ( ]
+	call_	address 'putchar'
+
+	ldi	ve '60'
+	ldi	vd '1'
+	ldi	vc '41'			[ ) ]
+	call_	address 'putchar'
+
+	ldi	ve '0'
+	ldi	vd '7'
+	ldi	vc '61'			[ = ]
+	call_	address 'putchar'
+
+	ldi	ve '4'
+	ldi	vd '7'
+	ldi	vc '61'			[ = ]
+	call_	address 'putchar'
+
+	ldi	ve '8'
+	ldi	vd '7'
+	ldi	vc '61'			[ = ]
+	call_	address 'putchar'
+
+	ldi	ve '12'
+	ldi	vd '7'
+	ldi	vc '61'			[ = ]
+	call_	address 'putchar'
+
+	ldi	ve '16'
+	ldi	vd '7'
+	ldi	vc '61'			[ = ]
+	call_	address 'putchar'
+
+	ldi	ve '20'
+	ldi	vd '7'
+	ldi	vc '61'			[ = ]
+	call_	address 'putchar'
+
+	ldi	ve '24'
+	ldi	vd '7'
+	ldi	vc '61'			[ = ]
+	call_	address 'putchar'
+
+	ldi	ve '28'
+	ldi	vd '7'
+	ldi	vc '61'			[ = ]
+	call_	address 'putchar'
+
+	ldi	ve '32'
+	ldi	vd '7'
+	ldi	vc '61'			[ = ]
+	call_	address 'putchar'
+
+	ldi	ve '36'
+	ldi	vd '7'
+	ldi	vc '61'			[ = ]
+	call_	address 'putchar'
+
+	ldi	ve '40'
+	ldi	vd '7'
+	ldi	vc '61'			[ = ]
+	call_	address 'putchar'
+
+	ldi	ve '44'
+	ldi	vd '7'
+	ldi	vc '61'			[ = ]
+	call_	address 'putchar'
+
+	ldi	ve '48'
+	ldi	vd '7'
+	ldi	vc '61'			[ = ]
+	call_	address 'putchar'
+
+	ldi	ve '52'
+	ldi	vd '7'
+	ldi	vc '61'			[ = ]
+	call_	address 'putchar'
+
+	ldi	ve '56'
+	ldi	vd '7'
+	ldi	vc '61'			[ = ]
+	call_	address 'putchar'
+
+	ldi	ve '60'
+	ldi	vd '7'
+	ldi	vc '61'			[ = ]
+	call_	address 'putchar'
+
+	ldi	ve '0'
+	ldi	vd '13'
+	ldi	vc '52'			[ 4 ]
+	call_	address 'putchar'
+
+	ldi	ve '4'
+	ldi	vd '13'
+	ldi	vc '120'		[ x ]
+	call_	address 'putchar'
+
+	ldi	ve '8'
+	ldi	vd '13'
+	ldi	vc '54'			[ 6 ]
+	call_	address 'putchar'
+
+	[...]
+
+ label 'halt'
+	jp	address 'halt'
+
+ [label 'foo']
+	[ldi	v0 address-hi 'foo']
+	[ldi	v1 address-lo 'foo']
+
+[( x y c -- )]
+ label 'putchar'
+	ld	vb vc	[ save VC (c) ]
+
+[if (c >= 127) {]
+	ld	va vb
+	ldi	v9 '127'
+	sub	va v9
+	se	vf '0'
+	[(* do nothing *)]
+	jp	address 'L3'
+[} else if (c >= 96) {]
+	ld	va vb
+	ldi	v9 '96'
+	sub	va v9
+	se	vf '1'
+	jp	address 'L1'
+	[putchar_96();]
+	call_	address 'putchar_96'
+	jp	address 'L3'
+[} else if (c >= 64) {]
+ label 'L1'
+	ld	va vb
+	ldi	v9 '64'
+	sub	va v9
+	se	vf '1'
+	jp	address 'L2'
+	[putchar_64();]
+	call_	address 'putchar_64'
+	jp	address 'L3'
+[} else if (c >= 32) {]
+ label 'L2'
+	ld	va vb
+	ldi	v9 '32'
+	sub	va v9
+	se	vf '1'
+	jp	address 'L3'
+	[putchar_32();]
+	call_	address 'putchar_32'
+[	jp 'L3']
+[}]
+ label 'L3'
+	ret
+
+ label 'putchar_32'
+	ldi	v3 '32'
+	sub	vc v3
+
+	ld	va vc
+	ld	vb vc
+	add_	va vb
+	add_	va vb
+	add_	va vb
+	add_	va vb
+	add_	va vb
+
+	ld-i	address 'font4x6_32'
+	add-i	va
+
+	drw	ve vd '6'
+
+	ret
+
+ label 'font4x6_32'
+	db	x '00'	[ SPACE ]
+	db	x '00'
+	db	x '00'
+	db	x '00'
+	db	x '00'
+	db	x '00'
+
+	db	x '40'	[ ! ]
+	db	x '40'
+	db	x '40'
+	db	x '00'
+	db	x '40'
+	db	x '00'
+
+	db	x 'a0'	[ " ]
+	db	x 'a0'
+	db	x '00'
+	db	x '00'
+	db	x '00'
+	db	x '00'
+
+	db	x 'a0'	[ # ]
+	db	x 'e0'
+	db	x 'a0'
+	db	x 'e0'
+	db	x 'a0'
+	db	x '00'
+
+	db	x '40'	[ $ ]
+	db	x 'e0'
+	db	x 'c0'
+	db	x '60'
+	db	x 'e0'
+	db	x '40'
+
+	db	x 'a0'	[ % ]
+	db	x '20'
+	db	x '40'
+	db	x '80'
+	db	x 'a0'
+	db	x '00'
+
+	db	x 'c0'	[ & ]
+	db	x 'c0'
+	db	x '60'
+	db	x 'c0'
+	db	x 'e0'
+	db	x '00'
+
+	db	x '40'	[ ' ]
+	db	x '40'
+	db	x '00'
+	db	x '00'
+	db	x '00'
+	db	x '00'
+
+	db	x '40'	[ ( ]
+	db	x '80'
+	db	x '80'
+	db	x '80'
+	db	x '40'
+	db	x '00'
+
+	db	x '40'	[ ) ]
+	db	x '20'
+	db	x '20'
+	db	x '20'
+	db	x '40'
+	db	x '00'
+
+	db	x '40'	[ * ]
+	db	x 'e0'
+	db	x 'a0'
+	db	x '00'
+	db	x '00'
+	db	x '00'
+
+	db	x '00'	[ + ]
+	db	x '00'
+	db	x '40'
+	db	x 'e0'
+	db	x '40'
+	db	x '00'
+
+	db	x '00'	[ , ]
+	db	x '00'
+	db	x '00'
+	db	x '00'
+	db	x '40'
+	db	x '80'
+
+	db	x '00'	[ - ]
+	db	x '00'
+	db	x '00'
+	db	x 'e0'
+	db	x '00'
+	db	x '00'
+
+	db	x '00'	[ . ]
+	db	x '00'
+	db	x '00'
+	db	x '00'
+	db	x '40'
+	db	x '00'
+
+	db	x '20'	[ / ]
+	db	x '20'
+	db	x '40'
+	db	x '80'
+	db	x '80'
+	db	x '00'
+
+	db	x '40'	[ 0 ]
+	db	x 'a0'
+	db	x 'a0'
+	db	x 'a0'
+	db	x '40'
+	db	x '00'
+
+	db	x '40'	[ 1 ]
+	db	x 'c0'
+	db	x '40'
+	db	x '40'
+	db	x 'e0'
+	db	x '00'
+
+	db	x 'c0'	[ 2 ]
+	db	x '20'
+	db	x '40'
+	db	x '80'
+	db	x 'e0'
+	db	x '00'
+
+	db	x 'c0'	[ 3 ]
+	db	x '20'
+	db	x '40'
+	db	x '20'
+	db	x 'c0'
+	db	x '00'
+
+	db	x '60'	[ 4 ]
+	db	x 'a0'
+	db	x 'a0'
+	db	x 'e0'
+	db	x '20'
+	db	x '00'
+
+	db	x 'e0'	[ 5 ]
+	db	x '80'
+	db	x 'c0'
+	db	x '20'
+	db	x 'c0'
+	db	x '00'
+
+	db	x '60'	[ 6 ]
+	db	x '80'
+	db	x 'c0'
+	db	x 'a0'
+	db	x '40'
+	db	x '00'
+
+	db	x 'e0'	[ 7 ]
+	db	x '20'
+	db	x '20'
+	db	x '40'
+	db	x '40'
+	db	x '00'
+
+	db	x '40'	[ 8 ]
+	db	x 'a0'
+	db	x '40'
+	db	x 'a0'
+	db	x '40'
+	db	x '00'
+
+	db	x '40'	[ 9 ]
+	db	x 'a0'
+	db	x '60'
+	db	x '20'
+	db	x '40'
+	db	x '00'
+
+	db	x '00'	[ : ]
+	db	x '00'
+	db	x '40'
+	db	x '00'
+	db	x '40'
+	db	x '00'
+
+	db	x '00'	[ ; ]
+	db	x '00'
+	db	x '40'
+	db	x '00'
+	db	x '40'
+	db	x '80'
+
+	db	x '00'	[ < ]
+	db	x '00'
+	db	x '40'
+	db	x '80'
+	db	x '40'
+	db	x '00'
+
+	db	x '00'	[ = ]
+	db	x '00'
+	db	x 'e0'
+	db	x '00'
+	db	x 'e0'
+	db	x '00'
+
+	db	x '00'	[ > ]
+	db	x '00'
+	db	x '40'
+	db	x '20'
+	db	x '40'
+	db	x '00'
+
+	db	x 'c0'	[ ? ]
+	db	x '20'
+	db	x '40'
+	db	x '00'
+	db	x '40'
+	db	x '00'
+
+ label 'putchar_64'
+	ldi	v3 '64'
+	sub	vc v3
+
+	ld	va vc
+	ld	vb vc
+	add_	va vb
+	add_	va vb
+	add_	va vb
+	add_	va vb
+	add_	va vb
+
+	ld-i	address 'font4x6_64'
+	add-i	va
+
+	drw	ve vd '6'
+
+	ret
+
+ label 'font4x6_64'
+	db	x '40'	[ @ ]
+	db	x 'a0'
+	db	x 'e0'
+	db	x '80'
+	db	x '60'
+	db	x '00'
+
+	db	x '40'	[ A ]
+	db	x 'a0'
+	db	x 'a0'
+	db	x 'e0'
+	db	x 'a0'
+	db	x '00'
+
+	db	x 'c0'	[ B ]
+	db	x 'a0'
+	db	x 'c0'
+	db	x 'a0'
+	db	x 'c0'
+	db	x '00'
+
+	db	x '40'	[ C ]
+	db	x 'a0'
+	db	x '80'
+	db	x 'a0'
+	db	x '40'
+	db	x '00'
+
+	db	x 'c0'	[ D ]
+	db	x 'a0'
+	db	x 'a0'
+	db	x 'a0'
+	db	x 'c0'
+	db	x '00'
+
+	db	x 'e0'	[ E ]
+	db	x '80'
+	db	x 'c0'
+	db	x '80'
+	db	x 'e0'
+	db	x '00'
+
+	db	x 'e0'	[ F ]
+	db	x '80'
+	db	x 'c0'
+	db	x '80'
+	db	x '80'
+	db	x '00'
+
+	db	x '60'	[ G ]
+	db	x '80'
+	db	x 'a0'
+	db	x 'a0'
+	db	x '60'
+	db	x '00'
+
+	db	x 'a0'	[ H ]
+	db	x 'a0'
+	db	x 'e0'
+	db	x 'a0'
+	db	x 'a0'
+	db	x '00'
+
+	db	x 'e0'	[ I ]
+	db	x '40'
+	db	x '40'
+	db	x '40'
+	db	x 'e0'
+	db	x '00'
+
+	db	x '20'	[ J ]
+	db	x '20'
+	db	x '20'
+	db	x 'a0'
+	db	x '40'
+	db	x '00'
+
+	db	x 'a0'	[ K ]
+	db	x 'c0'
+	db	x 'c0'
+	db	x 'a0'
+	db	x 'a0'
+	db	x '00'
+
+	db	x '80'	[ L ]
+	db	x '80'
+	db	x '80'
+	db	x '80'
+	db	x 'e0'
+	db	x '00'
+
+	db	x 'a0'	[ M ]
+	db	x 'e0'
+	db	x 'e0'
+	db	x 'e0'
+	db	x 'e0'
+	db	x '00'
+
+	db	x 'a0'	[ N ]
+	db	x 'e0'
+	db	x 'e0'
+	db	x 'e0'
+	db	x 'a0'
+	db	x '00'
+
+	db	x '40'	[ O ]
+	db	x 'a0'
+	db	x 'a0'
+	db	x 'a0'
+	db	x '40'
+	db	x '00'
+
+	db	x 'c0'	[ P ]
+	db	x 'a0'
+	db	x 'a0'
+	db	x 'c0'
+	db	x '80'
+	db	x '00'
+
+	db	x '40'	[ Q ]
+	db	x 'a0'
+	db	x 'a0'
+	db	x 'e0'
+	db	x '60'
+	db	x '00'
+
+	db	x 'c0'	[ R ]
+	db	x 'a0'
+	db	x 'a0'
+	db	x 'c0'
+	db	x 'a0'
+	db	x '00'
+
+	db	x '60'	[ S ]
+	db	x '80'
+	db	x '40'
+	db	x '20'
+	db	x 'c0'
+	db	x '00'
+
+	db	x 'e0'	[ T ]
+	db	x '40'
+	db	x '40'
+	db	x '40'
+	db	x '40'
+	db	x '00'
+
+	db	x 'a0'	[ U ]
+	db	x 'a0'
+	db	x 'a0'
+	db	x 'a0'
+	db	x 'e0'
+	db	x '00'
+
+	db	x 'a0'	[ V ]
+	db	x 'a0'
+	db	x 'a0'
+	db	x 'e0'
+	db	x '40'
+	db	x '00'
+
+	db	x 'a0'	[ W ]
+	db	x 'a0'
+	db	x 'e0'
+	db	x 'e0'
+	db	x 'a0'
+	db	x '00'
+
+	db	x 'a0'	[ X ]
+	db	x 'a0'
+	db	x '40'
+	db	x 'a0'
+	db	x 'a0'
+	db	x '00'
+
+	db	x 'a0'	[ Y ]
+	db	x 'a0'
+	db	x 'e0'
+	db	x '40'
+	db	x '40'
+	db	x '00'
+
+	db	x 'e0'	[ Z ]
+	db	x '20'
+	db	x '40'
+	db	x '80'
+	db	x 'e0'
+	db	x '00'
+
+	db	x 'e0'	[ [ ]
+	db	x '80'
+	db	x '80'
+	db	x '80'
+	db	x 'e0'
+	db	x '00'
+
+	db	x '80'	[ \ ]
+	db	x '80'
+	db	x '40'
+	db	x '20'
+	db	x '20'
+	db	x '00'
+
+	db	x 'e0'	[ RIGHT-BRACKET ]
+	db	x '20'
+	db	x '20'
+	db	x '20'
+	db	x 'e0'
+	db	x '00'
+
+	db	x '40'	[ ^ ]
+	db	x 'a0'
+	db	x '00'
+	db	x '00'
+	db	x '00'
+	db	x '00'
+
+	db	x '00'
+	db	x '00'
+	db	x '00'
+	db	x '00'
+	db	x '00'
+	db	x 'e0'
+
+ label 'putchar_96'
+	ldi	v3 '96'
+	sub	vc v3
+
+	ld	va vc
+	ld	vb vc
+	add_	va vb
+	add_	va vb
+	add_	va vb
+	add_	va vb
+	add_	va vb
+
+	ld-i	address 'font4x6_96'
+	add-i	va
+
+	drw	ve vd '6'
+
+	ret
+
+ label 'font4x6_96'
+	db	x '80'	[ ` ]
+	db	x '40'
+	db	x '00'
+	db	x '00'
+	db	x '00'
+	db	x '00'
+
+	db	x '00'	[ a ]
+	db	x 'c0'
+	db	x '20'
+	db	x 'e0'
+	db	x 'e0'
+	db	x '00'
+
+	db	x '80'	[ b ]
+	db	x 'c0'
+	db	x 'a0'
+	db	x 'a0'
+	db	x 'c0'
+	db	x '00'
+
+	db	x '00'	[ c ]
+	db	x '60'
+	db	x '80'
+	db	x '80'
+	db	x '60'
+	db	x '00'
+
+	db	x '20'	[ d ]
+	db	x '60'
+	db	x 'a0'
+	db	x 'a0'
+	db	x '60'
+	db	x '00'
+
+	db	x '00'	[ e ]
+	db	x '40'
+	db	x 'e0'
+	db	x '80'
+	db	x '60'
+	db	x '00'
+
+	db	x '20'	[ f ]
+	db	x '40'
+	db	x 'e0'
+	db	x '40'
+	db	x '40'
+	db	x '00'
+
+	db	x '00'	[ g ]
+	db	x '60'
+	db	x 'a0'
+	db	x '60'
+	db	x '20'
+	db	x 'c0'
+
+	db	x '80'	[ h ]
+	db	x 'c0'
+	db	x 'a0'
+	db	x 'a0'
+	db	x 'a0'
+	db	x '00'
+
+	db	x '40'	[ i ]
+	db	x '00'
+	db	x 'c0'
+	db	x '40'
+	db	x 'e0'
+	db	x '00'
+
+	db	x '40'	[ j ]
+	db	x '00'
+	db	x 'c0'
+	db	x '40'
+	db	x '40'
+	db	x '80'
+
+	db	x '80'	[ k ]
+	db	x 'a0'
+	db	x 'c0'
+	db	x 'a0'
+	db	x 'a0'
+	db	x '00'
+
+	db	x 'c0'	[ l ]
+	db	x '40'
+	db	x '40'
+	db	x '40'
+	db	x 'e0'
+	db	x '00'
+
+	db	x '00'	[ m ]
+	db	x 'c0'
+	db	x 'e0'
+	db	x 'e0'
+	db	x 'e0'
+	db	x '00'
+
+	db	x '00'	[ n ]
+	db	x 'c0'
+	db	x 'a0'
+	db	x 'a0'
+	db	x 'a0'
+	db	x '00'
+
+	db	x '00'	[ o ]
+	db	x '40'
+	db	x 'a0'
+	db	x 'a0'
+	db	x '40'
+	db	x '00'
+
+	db	x '00'	[ p ]
+	db	x 'c0'
+	db	x 'a0'
+	db	x 'a0'
+	db	x 'c0'
+	db	x '80'
+
+	db	x '00'	[ q ]
+	db	x '60'
+	db	x 'a0'
+	db	x 'a0'
+	db	x '60'
+	db	x '20'
+
+	db	x '00'	[ r ]
+	db	x 'a0'
+	db	x 'c0'
+	db	x '80'
+	db	x '80'
+	db	x '00'
+
+	db	x '00'	[ s ]
+	db	x '60'
+	db	x 'c0'
+	db	x '20'
+	db	x 'c0'
+	db	x '00'
+
+	db	x '40'	[ t ]
+	db	x 'e0'
+	db	x '40'
+	db	x '40'
+	db	x '20'
+	db	x '00'
+
+	db	x '00'	[ u ]
+	db	x 'a0'
+	db	x 'a0'
+	db	x 'a0'
+	db	x '60'
+	db	x '00'
+
+	db	x '00'	[ v ]
+	db	x 'a0'
+	db	x 'a0'
+	db	x 'e0'
+	db	x '40'
+	db	x '00'
+
+	db	x '00'	[ w ]
+	db	x 'a0'
+	db	x 'e0'
+	db	x 'e0'
+	db	x 'e0'
+	db	x '00'
+
+	db	x '00'	[ x ]
+	db	x 'a0'
+	db	x '40'
+	db	x 'a0'
+	db	x 'a0'
+	db	x '00'
+
+	db	x '00'	[ y ]
+	db	x 'a0'
+	db	x 'a0'
+	db	x '60'
+	db	x '20'
+	db	x 'c0'
+
+	db	x '00'	[ z ]
+	db	x 'e0'
+	db	x '40'
+	db	x '80'
+	db	x 'e0'
+	db	x '00'
+
+	db	x '60'	[ { ]
+	db	x '40'
+	db	x 'c0'
+	db	x '40'
+	db	x '60'
+	db	x '00'
+
+	db	x '40'	[ | ]
+	db	x '40'
+	db	x '40'
+	db	x '40'
+	db	x '40'
+	db	x '00'
+
+	db	x 'c0'	[ } ]
+	db	x '40'
+	db	x '60'
+	db	x '40'
+	db	x 'c0'
+	db	x '00'
+
+	db	x '60'	[ ~ ]
+	db	x 'c0'
+	db	x '00'
+	db	x '00'
+	db	x '00'
+	db	x '00'
+
+	[...]
+
+  [return] '0'

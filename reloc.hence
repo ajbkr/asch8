@@ -1,0 +1,192 @@
+[CHIP-8 Pseudo-Assembler -- relocator]
+[Copyright 2014 Andrew J. Baker]
+
+offset
+  subtract '1' [from] depth
+
+v0 '0'
+v1 '1'
+v2 '2'
+v3 '3'
+v4 '4'
+v5 '5'
+v6 '6'
+v7 '7'
+v8 '8'
+v9 '9'
+va hexadecimal 'a'
+vb hexadecimal 'b'
+vc hexadecimal 'c'
+vd hexadecimal 'd'
+ve hexadecimal 'e'
+vf hexadecimal 'f'
+
+advance
+  get 'offset'
+  increment
+  increment
+  set 'offset'
+
+[ vx -- ]
+add-i
+  advance drop
+
+[ vx vy -- ]
+add_
+  advance drop drop
+
+[ vx kk -- ]
+addi
+  advance drop drop
+
+[ vx vy -- ]
+and_
+  advance drop drop
+
+[ nnn -- ]
+call_
+  advance drop
+
+[ -- ]
+cls
+  advance
+
+[ n vy vx -- ]
+drw
+  advance drop drop drop
+
+[ nnn -- ]
+jp-v0
+  advance drop
+
+[ nnn -- ]
+jp
+  advance drop
+
+[ vx -- ]
+ld-dt
+  advance drop
+
+[ vx -- ]
+ld-mi
+  advance drop
+
+[ vx -- ]
+ld-st
+  advance drop
+
+[ vx -- ]
+ld-b
+  advance drop
+
+[ vx -- ]
+ld-f
+  advance drop
+
+[ nnn -- ]
+ld-i
+  advance drop
+
+[ vx kk -- ]
+ldi
+  advance drop drop
+
+[ vx vy -- ]
+ld
+  advance drop drop
+
+[ vx vy -- ]
+or_
+  advance drop drop
+
+[ -- ]
+ret
+  advance
+
+[ vx kk -- ]
+rnd
+  advance drop drop
+
+[ vx kk -- ]
+se
+  advance drop drop
+
+[ vx vy -- ]
+shl
+  advance drop drop
+
+[ vx vy -- ]
+shr
+  advance drop drop
+
+[ vx -- ]
+sknp
+  advance drop
+
+[ vx -- ]
+skp
+  advance drop
+
+[ vx kk -- ]
+sne
+  advance drop drop
+
+[ vx -- ]
+st-dt
+  advance drop
+
+[ vx -- ]
+st-k
+  advance drop
+
+[ vx -- ]
+st-mi
+  advance drop
+
+[ vx vy -- ]
+subn
+  advance drop drop
+
+[ vx vy -- ]
+sub
+  advance drop drop
+
+[ nnn -- ]
+sys
+  advance drop
+
+[ vx vy -- ]
+xor
+  advance drop drop
+
+[ name -- nnn ]
+address
+  write append ' ' [to] get 'offset'
+  write-line [name]
+  [return] '0'
+
+[ name -- n ]
+address-hi
+  write append ' ' [to] bitwise-shift-right get 'offset' [and] '8'
+  write-line [name]
+  [return] '0'
+
+[ name -- nn ]
+address-lo
+  write append ' ' [to] bitwise-and get 'offset' [and] hexadecimal '00ff'
+  write-line [name]
+  [return] '0'
+
+[ nn -- ]
+db
+  increment-variable 'offset' [(1-byte advance)] drop
+
+[ name -- ]
+label
+  write append ' ' [to name]
+  write-line get 'offset'
+  [return] '0'
+
+init-asch8
+  reserve '1' [element at BOS]
+  set 'offset' [to] hexadecimal '0200'

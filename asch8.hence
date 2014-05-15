@@ -1,0 +1,255 @@
+[CHIP-8 Pseudo-Assembler -- code generator]
+[Copyright 2014 Andrew J. Baker]
+
+offset
+  subtract '1' [from] depth
+
+v0 '0'
+v1 '1'
+v2 '2'
+v3 '3'
+v4 '4'
+v5 '5'
+v6 '6'
+v7 '7'
+v8 '8'
+v9 '9'
+va hexadecimal 'a'
+vb hexadecimal 'b'
+vc hexadecimal 'c'
+vd hexadecimal 'd'
+ve hexadecimal 'e'
+vf hexadecimal 'f'
+
+advance
+  increment-variable 'offset'
+  increment-variable 'offset'
+
+[ vx -- ]
+add-i
+  write-line bitwise-or hexadecimal 'f0' [and] bitwise-and [vx and] hexadecimal '0f'
+  write-line hexadecimal '1e'
+  advance
+
+[ vy vx -- ]
+add_
+  write-line bitwise-or hexadecimal '80' [and] bitwise-and hexadecimal 'f' [and vx]
+  write-line bitwise-or '4' [and] bitwise-shift-left swap [(vy) and] '4'
+  advance
+
+[ kk vx -- ]
+addi
+  write-line bitwise-or hexadecimal '70' [and] bitwise-and hexadecimal 'f' [and vx]
+  write-line bitwise-and hexadecimal 'ff' [and kk]
+  advance
+
+[ vy vx -- ]
+and_
+  write-line bitwise-or hexadecimal '80' [and] bitwise-and hexadecimal 'f' [and vx]
+  write-line bitwise-or '2' [and] bitwise-shift-left swap [(vy) and] '4'
+  advance
+
+[ nnn -- ]
+call_
+  duplicate [nnn]
+  write-line bitwise-or hexadecimal '20' [and] bitwise-shift-right swap [(nnn') by] '8'
+  write-line bitwise-and hexadecimal 'ff' [and nnn]
+  advance
+
+[ -- ]
+cls
+  write-line '0'
+  write-line hexadecimal 'e0'
+  advance
+
+[ n vy vx -- ]
+drw
+  write-line bitwise-or hexadecimal 'd0' [and] bitwise-and hexadecimal 'f' [and vx]
+  write-line bitwise-or bitwise-shift-left swap [(vy) and] '4' [and] bitwise-and hexadecimal 'f' [and vy]
+  advance
+
+[ nnn -- ]
+jp-v0
+  duplicate [nnn]
+  write-line bitwise-or hexadecimal 'b0' [and] bitwise-shift-right swap [(nnn') by] '8'
+  write-line bitwise-and hexadecimal 'ff' [and nnn]
+  advance
+
+[ nnn -- ]
+jp
+  duplicate [nnn]
+  write-line bitwise-or hexadecimal '10' [and] bitwise-shift-right swap [(nnn') by] '8'
+  write-line bitwise-and hexadecimal 'ff' [and nnn]
+  advance
+
+[ vx -- ]
+ld-dt
+  write-line bitwise-or hexadecimal 'f0' [and] bitwise-and [vx and] hexadecimal '0f'
+  write-line hexadecimal '15'
+  advance
+
+[ vx -- ]
+ld-mi
+  write-line bitwise-or hexadecimal 'f0' [and] bitwise-and [vx and] hexadecimal '0f'
+  write-line hexadecimal '55'
+  advance
+
+[ vx -- ]
+ld-st
+  write-line bitwise-or hexadecimal 'f0' [and] bitwise-and [vx and] hexadecimal '0f'
+  write-line hexadecimal '18'
+  advance
+
+[ vx -- ]
+ld-b
+  write-line bitwise-or hexadecimal 'f0' [and] bitwise-and [vx and] hexadecimal '0f'
+  write-line hexadecimal '33'
+  advance
+
+[ vx -- ]
+ld-f
+  write-line bitwise-or hexadecimal 'f0' [and] bitwise-and [vx and] hexadecimal '0f'
+  write-line hexadecimal '29'
+  advance
+
+[ nnn -- ]
+ld-i
+  duplicate [nnn]
+  write-line bitwise-or hexadecimal 'a0' [and] bitwise-shift-right swap [(nnn') by] '8'
+  write-line bitwise-and hexadecimal 'ff' [and nnn]
+  advance
+
+[ kk vx -- ]
+ldi
+  write-line bitwise-or hexadecimal '60' [and] bitwise-and hexadecimal 'f' [and vx]
+  write-line bitwise-and hexadecimal 'ff' [and kk]
+  advance
+
+[ vy vx -- ]
+ld
+  write-line bitwise-or hexadecimal '80' [and] bitwise-and hexadecimal 'f' [and vx]
+  write-line bitwise-shift-left swap [(vy) and] '4'
+  advance
+
+[ vy vx -- ]
+or_
+  write-line bitwise-or hexadecimal '80' [and] bitwise-and hexadecimal 'f' [and vx]
+  write-line bitwise-or '1' [and] bitwise-shift-left swap [(vy) and] '4'
+  advance
+
+[ -- ]
+ret
+  write-line '0'
+  write-line hexadecimal 'ee'
+  advance
+
+[ kk vx -- ]
+rnd
+  write-line bitwise-or hexadecimal 'c0' [and] bitwise-and hexadecimal 'f' [and vx]
+  write-line bitwise-and hexadecimal 'ff' [and kk]
+  advance
+
+[ kk vx -- ]
+se
+  write-line bitwise-or hexadecimal '30' [and] bitwise-and hexadecimal 'f' [and vx]
+  write-line bitwise-and hexadecimal 'ff' [and kk]
+  advance
+
+[ vy vx -- ]
+shl
+  write-line bitwise-or hexadecimal '80' [and] bitwise-and hexadecimal 'f' [and vx]
+  write-line bitwise-or hexadecimal 'e' [and] bitwise-shift-left swap [(vy) and] '4'
+  advance
+
+[ vy vx -- ]
+shr
+  write-line bitwise-or hexadecimal '80' [and] bitwise-and hexadecimal 'f' [and vx]
+  write-line bitwise-or '6' [and] bitwise-shift-left swap [(vy) and] '4'
+  advance
+
+[ vx -- ]
+sknp
+  write-line bitwise-or hexadecimal 'e0' [and] bitwise-and [vx and] hexadecimal '0f'
+  write-line hexadecimal 'a1'
+  advance
+
+[ vx -- ]
+skp
+  write-line bitwise-or hexadecimal 'e0' [and] bitwise-and [vx and] hexadecimal '0f'
+  write-line hexadecimal '9e'
+  advance
+
+[ kk vx -- ]
+sne
+  write-line bitwise-or hexadecimal '40' [and] bitwise-and hexadecimal 'f' [and vx]
+  write-line bitwise-and hexadecimal 'ff' [and kk]
+  advance
+
+[ vx -- ]
+st-dt
+  write-line bitwise-or hexadecimal 'f0' [and] bitwise-and [vx and] hexadecimal '0f'
+  write-line '7'
+  advance
+
+[ vx -- ]
+st-k
+  write-line bitwise-or hexadecimal 'f0' [and] bitwise-and [vx and] hexadecimal '0f'
+  write-line hexadecimal 'a'
+  advance
+
+[ vx -- ]
+st-mi
+  write-line bitwise-or hexadecimal 'f0' [and] bitwise-and [vx and] hexadecimal '0f'
+  write-line hexadecimal '65'
+  advance
+
+[ vy vx -- ]
+subn
+  swap [vx and vy]
+  write-line bitwise-or hexadecimal '80' [and] bitwise-and hexadecimal 'f' [and vx]
+  write-line bitwise-or '7' [and] bitwise-shift-left swap [(vy) and] '4'
+  advance
+
+[ vy vx -- ]
+sub
+  write-line bitwise-or hexadecimal '80' [and] bitwise-and hexadecimal 'f' [and vx]
+  write-line bitwise-or '5' [and] bitwise-shift-left swap [(vy) and] '4'
+  advance
+
+[ nnn -- ]
+sys
+  duplicate [nnn]
+  write-line bitwise-or '0' [and] bitwise-shift-right swap [(nnn') by] '8'
+  write-line bitwise-and hexadecimal '00ff' [and nnn]
+  advance
+
+[ vy vx -- ]
+xor
+  write-line bitwise-or hexadecimal '80' [and] bitwise-and hexadecimal 'f' [and vx]
+  write-line bitwise-or '3' [and] bitwise-shift-left swap [(vy) and] '4'
+  advance
+
+[ name -- nnn ]
+address
+  '0' drop
+
+[ name -- n ]
+address-hi
+  '0' drop
+
+[ name -- nn ]
+address-lo
+  '0' drop
+
+[ nn -- ]
+db
+  write-line bitwise-and hexadecimal 'ff' [and nn]
+  increment-variable 'offset' [(1-byte advance)]
+
+[ name -- ]
+label
+  drop
+
+init-asch8
+  reserve '1' [element at BOS]
+  set 'offset' [to] hexadecimal '0200'
