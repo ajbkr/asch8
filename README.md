@@ -1,7 +1,7 @@
 CHIP-8 Pseudo-Assembler
 =======================
 
-asch8 is a pseudo-assembler that targets CHIP-8 interpreters.
+asch8 is a pseudo-assembler that targets [CHIP-8](http://en.wikipedia.org/wiki/CHIP-8) interpreters.
 
 NOTE: Work-in-progress!
 
