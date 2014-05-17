@@ -1,0 +1,42 @@
+kk
+  subtract '2' [from] depth
+
+value-of
+  get
+
+_do-se
+	se	v0 value-of 'kk'
+	se	v1 value-of 'kk'
+	se	v2 value-of 'kk'
+	se	v3 value-of 'kk'
+	se	v4 value-of 'kk'
+	se	v5 value-of 'kk'
+	se	v6 value-of 'kk'
+	se	v7 value-of 'kk'
+	se	v8 value-of 'kk'
+	se	v9 value-of 'kk'
+	se	va value-of 'kk'
+	se	vb value-of 'kk'
+	se	vc value-of 'kk'
+	se	vd value-of 'kk'
+	se	ve value-of 'kk'
+	se	vf value-of 'kk'
+
+  increment-variable 'kk'
+_kk-is-less-than-256
+  [compare] value-of 'kk' [and] '256'
+  [kk is] less-than [256]
+test-se
+  set 'kk' [to] '0'
+  while '_kk-is-less-than-256' '_do-se'
+
+init
+  init-asch8
+  reserve '1' [element at BOS]
+
+main
+  init
+
+  test-se
+
+  [return] '0'

@@ -1,0 +1,42 @@
+kk
+  subtract '2' [from] depth
+
+value-of
+  get
+
+_do-addi
+	addi	v0 value-of 'kk'
+	addi	v1 value-of 'kk'
+	addi	v2 value-of 'kk'
+	addi	v3 value-of 'kk'
+	addi	v4 value-of 'kk'
+	addi	v5 value-of 'kk'
+	addi	v6 value-of 'kk'
+	addi	v7 value-of 'kk'
+	addi	v8 value-of 'kk'
+	addi	v9 value-of 'kk'
+	addi	va value-of 'kk'
+	addi	vb value-of 'kk'
+	addi	vc value-of 'kk'
+	addi	vd value-of 'kk'
+	addi	ve value-of 'kk'
+	addi	vf value-of 'kk'
+
+  increment-variable 'kk'
+_kk-is-less-than-256
+  [compare] value-of 'kk' [and] '256'
+  [kk is] less-than [256]
+test-addi
+  set 'kk' [to] '0'
+  while '_kk-is-less-than-256' '_do-addi'
+
+init
+  init-asch8
+  reserve '1' [element at BOS]
+
+main
+  init
+
+  test-addi
+
+  [return] '0'

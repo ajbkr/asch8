@@ -1,0 +1,12 @@
+test-ret
+	ret
+
+init
+  init-asch8
+
+main
+  init
+
+  test-ret
+
+  [return] '0'

@@ -1,0 +1,27 @@
+i
+  subtract '2' [from] depth
+
+value-of
+  get
+
+_do-call_
+	call_	value-of 'i'
+
+  increment-variable 'i'
+_i-is-less-than-4096
+  [compare] value-of 'i' [and] '4096'
+  [i is] less-than [4096]
+test-call_
+  set 'i' [to] '0'
+  while '_i-is-less-than-4096' '_do-call_'
+
+init
+  init-asch8
+  reserve '1' [element at BOS]
+
+main
+  init
+
+  test-call_
+
+  [return] '0'

@@ -1,0 +1,12 @@
+test-cls
+	cls
+
+init
+  init-asch8
+
+main
+  init
+
+  test-cls
+
+  [return] '0'
