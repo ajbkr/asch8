@@ -150,9 +150,15 @@ rnd
   advance
 
 [ kk vx -- ]
-se
+sei
   write-line bitwise-or hexadecimal '30' [and] bitwise-and hexadecimal 'f' [and vx]
   write-line bitwise-and hexadecimal 'ff' [and kk]
+  advance
+
+[ vy vx -- ]
+se
+  write-line bitwise-or hexadecimal '50' [and] bitwise-and hexadecimal 'f' [and vx]
+  write-line bitwise-shift-left swap [(vy) and] '4'
   advance
 
 [ vy vx -- ]
@@ -180,9 +186,15 @@ skp
   advance
 
 [ kk vx -- ]
-sne
+snei
   write-line bitwise-or hexadecimal '40' [and] bitwise-and hexadecimal 'f' [and vx]
   write-line bitwise-and hexadecimal 'ff' [and kk]
+  advance
+
+[ vy vx -- ]
+sne
+  write-line bitwise-or hexadecimal '90' [and] bitwise-and hexadecimal 'f' [and vx]
+  write-line bitwise-shift-left swap [(vy) and] '4'
   advance
 
 [ vx -- ]

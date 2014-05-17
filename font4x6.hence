@@ -394,14 +394,14 @@ main
 	ld	va vb
 	ldi	v9 '127'
 	sub	va v9
-	se	vf '0'
+	sei	vf '0'
 	[(* do nothing *)]
 	jp	address 'L3'
 [} else if (c >= 96) {]
 	ld	va vb
 	ldi	v9 '96'
 	sub	va v9
-	se	vf '1'
+	sei	vf '1'
 	jp	address 'L1'
 	[putchar_96();]
 	call_	address 'putchar_96'
@@ -411,7 +411,7 @@ main
 	ld	va vb
 	ldi	v9 '64'
 	sub	va v9
-	se	vf '1'
+	sei	vf '1'
 	jp	address 'L2'
 	[putchar_64();]
 	call_	address 'putchar_64'
@@ -421,7 +421,7 @@ main
 	ld	va vb
 	ldi	v9 '32'
 	sub	va v9
-	se	vf '1'
+	sei	vf '1'
 	jp	address 'L3'
 	[putchar_32();]
 	call_	address 'putchar_32'

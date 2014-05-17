@@ -108,6 +108,10 @@ rnd
   advance drop drop
 
 [ vx kk -- ]
+sei
+  advance drop drop
+
+[ vy vx -- ]
 se
   advance drop drop
 
@@ -128,6 +132,10 @@ skp
   advance drop
 
 [ vx kk -- ]
+snei
+  advance drop drop
+
+[ vy vx -- ]
 sne
   advance drop drop
 
