@@ -189,6 +189,10 @@ address-lo
 db
   increment-variable 'offset' [(1-byte advance)] drop
 
+[ nnnn -- ]
+dw
+  advance drop
+
 [ name -- ]
 label
   write append ' ' [to name]
