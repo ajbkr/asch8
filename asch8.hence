@@ -261,7 +261,7 @@ db
 [ nnnn -- ]
 dw
   duplicate [nnnn]
-  write-line bitwise-and bitwise-shift-right swap [(nnnn') and] '8' [and] hexadecimal 'ff'
+  write-line bitwise-and hexadecimal 'ff [and] bitwise-shift-right swap [(nnnn') and] '8'
   write-line bitwise-and swap [(nnnn) and] hexadecimal 'ff'
 
 [ name -- ]
