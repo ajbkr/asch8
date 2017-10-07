@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
             ++i;
         } else {
             item.key = strdup(s1);
-            item.data = (void *) atoi(s2);
+            item.data = (void *)(intptr_t) atoi(s2);
             if (hsearch(item, ENTER) == NULL) {
                 (void) fprintf(stderr, PROGNAME ": Entry failed");
                 exit(EXIT_FAILURE);
@@ -86,7 +86,7 @@ int main(int argc, char *argv[])
             b = Ram[Tuples[i].offset + 1];
             item.key = Tuples[i].name;
             if ( (found_item = hsearch(item, FIND)) != NULL) {
-                b |= (int) found_item->data;
+                b |= (int)(intptr_t) found_item->data;
                 Ram[Tuples[i].offset + 1] = b & 0xff;
             } else {
                 /* error */
@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
               Ram[Tuples[i].offset - 0x0200 + 1];
             item.key = Tuples[i].name;
             if ( (found_item = hsearch(item, FIND)) != NULL) {
-                w |= (int) found_item->data;
+                w |= (int)(intptr_t) found_item->data;
                 Ram[Tuples[i].offset - 0x0200] = (w >> 8);
                 Ram[Tuples[i].offset - 0x0200 + 1] = w & 0xff;
             } else {
