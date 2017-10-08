@@ -1,9 +1,12 @@
-#include <inttypes.h>
-#include <search.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <stdio.h>
+#include <inttypes.h>	/* uint16_t, uint8_t */
+#include <limits.h>	/* LONG_MAX, LONG_MIN */
+#include <search.h>	/* ENTRY, hcreate(), hdestroy(), hsearch() */
+#include <stdlib.h>	/* exit(), malloc(), strtol() */
+#include <string.h>	/* strncpy() */
+#include <ctype.h>	/* isdigit() */
+#include <errno.h>	/* errno */
+#include <stdio.h>	/* fclose(), fgetc(), fopen(), fprintf(), fseek(), ftell(),
+			   perror(), putchar(), rewind(), stderr, stdin */
 
 #define PROGNAME	"reloc8"
 
@@ -16,6 +19,26 @@ struct Tuple {
     char name[256];
 };
 struct Tuple Tuples[NEL];
+
+static long Strtol(const char *nptr, char **endptr, int base)
+{
+    long val;
+
+    errno = 0;
+    val = strtol(nptr, endptr, base);
+    if (((val == LONG_MIN || val == LONG_MAX) && errno == ERANGE) ||
+        (val == 0 && errno != 0)) {
+        perror("strtol");
+        exit(EXIT_FAILURE);
+    }
+
+    if (endptr == (char **) nptr) {
+        (void) fprintf(stderr, "strtol: Failure\n");
+        exit(EXIT_FAILURE);
+    }
+
+    return val;
+}
 
 static void usage(void)
 {
@@ -67,13 +90,13 @@ int main(int argc, char *argv[])
     i = 0;
     while (fscanf(stdin, "%s %s", s1, s2) != EOF) {
         if (isdigit(s1[0])) {
-            Tuples[i].offset = atoi(s1);
+            Tuples[i].offset = (int) Strtol(s1, NULL, 10);
             (void) strncpy(Tuples[i].name, s2, 255);
             Tuples[i].name[strlen(s2)] = '\0';
             ++i;
         } else {
             item.key = strdup(s1);
-            item.data = (void *)(intptr_t) atoi(s2);
+            item.data = (void *)(intptr_t) Strtol(s2, NULL, 10);
             if (hsearch(item, ENTER) == NULL) {
                 (void) fprintf(stderr, PROGNAME ": Entry failed");
                 exit(EXIT_FAILURE);

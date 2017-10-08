@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h>	/* EOF, putchar(), scanf() */
 
 int main(void)
 {
