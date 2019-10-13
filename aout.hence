@@ -1,0 +1,134 @@
+x
+  hexadecimal
+
+init
+  init-asch8
+  init-macros
+
+main
+  init
+
+ label 'nop'
+	prolog
+
+	[ ... ]
+
+	epilog
+
+[ void printn(char n) { // ... ]
+ label 'printn'
+	[ char i; ]
+	prolog-n '1'
+
+	[ i = 0; ]
+	ldi	v0 '0'
+	fpokeb	'-1'
+
+	[ goto L2; ]
+	jp	address 'printn_L2'
+
+[ L1: ]
+ label 'printn_L1'
+	fpeekb	'-1'
+
+	[ drw(i * 5, 0, 5); ]
+	ld-f	v0
+	ld	v1 v0
+	add_	v0 v1
+	add_	v0 v1
+	add_	v0 v1
+	add_	v0 v1
+	ldi	v1 '0'
+	drw	v0 v1 '5'
+
+	[ ++i; ]
+	fpeekb	'-1'
+	addi	v0 '1'
+	fpokeb	'-1'
+
+[ L2: ]
+ label 'printn_L2'
+	[ if (i != n) goto L1; ]
+	fpeekb	'1'
+	ld	v1 v0
+	fpeekb	'-1'
+	se	v0 v1
+	jp	address 'printn_L1'
+
+	epilog
+
+ label 'foo'
+	prolog
+
+	ldi	v0 '0'
+	ldi	v1 '0'
+
+	fpeekw	'1'
+
+	ld	v4 v0
+	ld	v5 v1
+
+	[ ... ]
+
+	epilog
+
+ label 'main'
+	ldi	v2 x '55'
+	ld	v0 v2
+	pushb
+
+	ldi	v3 x 'aa'
+	ld	v0 v3
+	pushb
+
+	popb
+	ld	v2 v0
+
+	popb
+	ld	v3 v0
+
+	[ ... ]
+
+	ldi	v4 x '01'
+	ld	v0 v4
+	ldi	v5 x '23'
+	ld	v1 v5
+	pushw
+
+	ldi	v6 x '45'
+	ld	v0 v6
+	ldi	v7 x '67'
+	ld	v1 v7
+	pushw
+
+	popw
+	ld	v4 v0
+	ld	v5 v1
+
+	popw
+	ld	v6 v0
+	ld	v7 v1
+
+	[ ... ]
+
+	[ nop(); ]
+	call_	address 'nop'
+
+	[ printn(13); ]
+	ldi	v0 '13'
+	pushb
+	call_	address 'printn'
+	addi	ve '1'
+
+	[ foo(0xaa55); ]
+	ldi	v0 x 'aa'
+	ldi	v1 x '55'
+	pushw
+	call_	address 'foo'
+	addi	ve '2'
+
+	[ return 0; ]
+	ldi	v0 '0'
+	ret
+
+  [return] '0'

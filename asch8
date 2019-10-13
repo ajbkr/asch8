@@ -1,18 +1,26 @@
 #!/bin/bash
-A2B=/home/ajb/opt/asch8/a2b
-CC=/usr/bin/gcc
-CFLAGS='-I /home/ajb/opt/Hence/'
-HENCE=/home/ajb/opt/Hence/hence
-HFLAGS='-tc /home/ajb/opt/Hence/h0.hence'
-LIBHENCE=/home/ajb/opt/Hence/libhence.c
-RELOC8=/home/ajb/opt/asch8/reloc8
+# Absolute path to asch8 directory
+AWD=/Users/ajb/src/asch8
+# Absolute path to Hence directory
+HWD=/Users/ajb/src/Hence
 
-$HENCE $HFLAGS asch8.hence $1.hence > $1.c &&				\
-	$CC $CFLAGS -o $1 $1.c $LIBHENCE &&				\
-	./$1 | $A2B > $1.ch8 &&						\
-	rm $1 $1.c &&							\
-	$HENCE $HFLAGS reloc.hence $1.hence > $1-reloc.c &&		\
-	$CC $CFLAGS -o $1-reloc $1-reloc.c $LIBHENCE &&			\
-	./$1-reloc | $RELOC8 $1.ch8 > $1-reloc.ch8 &&			\
-	rm $1-reloc $1-reloc.c $1.ch8 &&				\
+A2B=$AWD/a2b
+ASCH8_HENCE=$AWD/asch8.hence
+CC=/usr/bin/gcc
+CFLAGS='-I /Users/ajb/src/Hence/'
+HENCE=$HWD/hence
+HFLAGS='-tc /Users/ajb/src/Hence/h0.hence'
+LIBHENCE=$HWD/libhence.c
+MACROS_HENCE=$AWD/macros.hence
+RELOC8=$AWD/reloc8
+RELOC_HENCE=$AWD/reloc.hence
+
+$HENCE $HFLAGS $ASCH8_HENCE $MACROS_HENCE $1.hence > $1.c &&				\
+	$CC $CFLAGS -o $1 $1.c $LIBHENCE &&						\
+	./$1 | $A2B > $1.ch8 &&								\
+	rm $1 $1.c &&									\
+	$HENCE $HFLAGS $RELOC_HENCE $MACROS_HENCE $1.hence > $1-reloc.c &&		\
+	$CC $CFLAGS -o $1-reloc $1-reloc.c $LIBHENCE &&					\
+	./$1-reloc | $RELOC8 $1.ch8 > $1-reloc.ch8 &&					\
+	rm $1-reloc $1-reloc.c $1.ch8 &&						\
 	mv $1-reloc.ch8 $1.ch8
