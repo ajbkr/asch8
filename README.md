@@ -1,9 +1,8 @@
 CHIP-8 Pseudo-Assembler
 =======================
 
-asch8 is a pseudo-assembler that targets [CHIP-8](http://en.wikipedia.org/wiki/CHIP-8) interpreters.
-
-NOTE: Work-in-progress!
+asch8 is a pseudo-assembler that targets
+[CHIP-8](http://en.wikipedia.org/wiki/CHIP-8) interpreters.
 
 ### Getting Started ###
 
@@ -14,7 +13,7 @@ equally suitable for creating DSLs.
 
 You will almost certainly need to edit the paths at the top of the asch8 bash
 script. You may also need to download and install the latest version of Hence
-from http://github.com/andrewjbaker/Hence
+from https://github.com/ajbkr/Hence
 
 #### Basic Assembly ####
 
@@ -29,20 +28,21 @@ required to successfully assemble CHIP-8 source code to a binary file (with the
 .ch8 filename extension). This file can then be run on your favourite CHIP-8
 interpreter.
 
-#### Example ####
+#### Examples ####
 
-The file font4x6.hence is provided as an example of the CHIP-8 pseudo-assembly
-language accepted by this assembler.
+The files font4x6.hence and tomthumb.hence are provided as examples of the
+CHIP-8 pseudo-assembly language accepted by this assembler.
 
 ```
 $ ./asch8 font4x6
+$ ./asch8 tomthumb
 ```
 
-When the assembled binary is run, you should see output identical to the
-following image:
+When the assembled binaries are run, you should see output identical to the
+following image for font4x6:
 
 ![font4x6 output](/font4x6.gif?raw=true "font4x6 output")
 
-### TODO ###
+And output identical to the following image for tomthumb:
 
-- [ ] Add tests
+![tomthumb output](/tomthumb.gif?raw=true "tomthumb output")
