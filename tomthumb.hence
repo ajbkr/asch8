@@ -890,11 +890,11 @@ main
 	db	x 'e0'
 	db	x '00'
 
-	db	x '80'	[ \ ]
+	db	x '00'	[ \ ]
 	db	x '80'
 	db	x '40'
 	db	x '20'
-	db	x '20'
+	db	x '00'
 	db	x '00'
 
 	db	x 'e0'	[ RIGHT-BRACKET ]
@@ -911,12 +911,12 @@ main
 	db	x '00'
 	db	x '00'
 
-	db	x '00'
-	db	x '00'
+	db	x '00'	[ _ ]
 	db	x '00'
 	db	x '00'
 	db	x '00'
 	db	x 'e0'
+	db	x '00'
 
  label 'putchar_96'
 	ldi	v3 '96'
