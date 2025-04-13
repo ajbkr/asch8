@@ -478,25 +478,25 @@ main
 	db	x 'a0'
 	db	x '00'
 
-	db	x '40'	[ $ ]
-	db	x 'e0'
+	db	x '60'	[ $ ]
 	db	x 'c0'
 	db	x '60'
-	db	x 'e0'
+	db	x 'c0'
 	db	x '40'
+	db	x '00'
 
-	db	x 'a0'	[ % ]
+	db	x '80'	[ % ]
 	db	x '20'
 	db	x '40'
 	db	x '80'
-	db	x 'a0'
+	db	x '20'
 	db	x '00'
 
 	db	x 'c0'	[ & ]
 	db	x 'c0'
-	db	x '60'
-	db	x 'c0'
 	db	x 'e0'
+	db	x 'a0'
+	db	x '60'
 	db	x '00'
 
 	db	x '40'	[ ' ]
@@ -520,26 +520,26 @@ main
 	db	x '80'
 	db	x '00'
 
-	db	x '40'	[ * ]
-	db	x 'e0'
+	db	x 'a0'	[ * ]
+	db	x '40'
 	db	x 'a0'
 	db	x '00'
 	db	x '00'
 	db	x '00'
 
 	db	x '00'	[ + ]
-	db	x '00'
 	db	x '40'
 	db	x 'e0'
 	db	x '40'
+	db	x '00'
 	db	x '00'
 
 	db	x '00'	[ , ]
 	db	x '00'
 	db	x '00'
-	db	x '00'
 	db	x '40'
 	db	x '80'
+	db	x '00'
 
 	db	x '00'	[ - ]
 	db	x '00'
@@ -562,11 +562,11 @@ main
 	db	x '80'
 	db	x '00'
 
-	db	x '40'	[ 0 ]
+	db	x '60'	[ 0 ]
 	db	x 'a0'
 	db	x 'a0'
 	db	x 'a0'
-	db	x '40'
+	db	x 'c0'
 	db	x '00'
 
 	db	x '40'	[ 1 ]
@@ -613,9 +613,9 @@ main
 
 	db	x 'e0'	[ 7 ]
 	db	x '20'
-	db	x '20'
 	db	x '40'
-	db	x '40'
+	db	x '80'
+	db	x '80'
 	db	x '00'
 
 	db	x 'e0'	[ 8 ]
@@ -633,24 +633,24 @@ main
 	db	x '00'
 
 	db	x '00'	[ : ]
-	db	x '00'
 	db	x '40'
 	db	x '00'
 	db	x '40'
+	db	x '00'
 	db	x '00'
 
 	db	x '00'	[ ; ]
-	db	x '00'
 	db	x '40'
 	db	x '00'
 	db	x '40'
 	db	x '80'
+	db	x '00'
 
-	db	x '00'	[ < ]
-	db	x '00'
+	db	x '20'	[ < ]
 	db	x '40'
 	db	x '80'
 	db	x '40'
+	db	x '20'
 	db	x '00'
 
 	db	x '00'	[ = ]
@@ -660,14 +660,14 @@ main
 	db	x '00'
 	db	x '00'
 
-	db	x '00'	[ > ]
-	db	x '00'
+	db	x '80'	[ > ]
 	db	x '40'
 	db	x '20'
 	db	x '40'
+	db	x '80'
 	db	x '00'
 
-	db	x 'c0'	[ ? ]
+	db	x 'e0'	[ ? ]
 	db	x '20'
 	db	x '40'
 	db	x '00'
